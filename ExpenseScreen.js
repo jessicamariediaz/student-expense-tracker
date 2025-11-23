@@ -378,3 +378,135 @@ export default function ExpenseScreen() {
     </SafeAreaView>
   );
 }
+
+
+//style 
+
+
+const styles = StyleSheet.create({
+  container: { flex: 1, padding: 16, backgroundColor: '#111827' },
+  heading: {
+    fontSize: 24,
+    fontWeight: '700',
+    color: '#fff',
+    marginBottom: 12,
+  },
+  form: {
+    marginBottom: 16,
+    gap: 8,
+  },
+  input: {
+    padding: 10,
+    backgroundColor: '#1f2937',
+    color: '#fff',
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#374151',
+  },
+  expenseRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#1f2937',
+    padding: 12,
+    borderRadius: 8,
+    marginBottom: 8,
+  },
+  expenseAmount: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#fbbf24',
+  },
+  expenseCategory: {
+    fontSize: 14,
+    color: '#e5e7eb',
+  },
+  expenseDate: {
+    fontSize: 12,
+    color: '#a5b4fc',
+  },
+  expenseNote: {
+    fontSize: 12,
+    color: '#9ca3af',
+  },
+  delete: {
+    color: '#f87171',
+    fontSize: 20,
+    marginLeft: 12,
+  },
+  empty: {
+    color: '#9ca3af',
+    marginTop: 24,
+    textAlign: 'center',
+  },
+  footer: {
+    textAlign: 'center',
+    color: '#6b7280',
+    marginTop: 12,
+    fontSize: 12,
+  },
+  filtersRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 12,
+    gap: 8,
+  },
+  filterButton: {
+    flex: 1,
+    paddingVertical: 8,
+    borderRadius: 999,
+    borderWidth: 1,
+    borderColor: '#4b5563',
+    alignItems: 'center',
+    backgroundColor: '#111827',
+  },
+  filterButtonActive: {
+    backgroundColor: '#2563eb',
+    borderColor: '#2563eb',
+  },
+  filterButtonText: {
+    color: '#e5e7eb',
+    fontSize: 13,
+    fontWeight: '500',
+  },
+  filterButtonTextActive: {
+    color: '#f9fafb',
+  },
+  totalsCard: {
+    backgroundColor: '#020617',
+    borderRadius: 12,
+    padding: 12,
+    marginBottom: 12,
+    borderWidth: 1,
+    borderColor: '#1f2937',
+  },
+  totalHeading: {
+    color: '#e5e7eb',
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  totalAmount: {
+    color: '#fbbf24',
+    fontSize: 22,
+    fontWeight: '800',
+    marginTop: 4,
+  },
+  totalEmpty: {
+    color: '#9ca3af',
+    fontSize: 12,
+    marginTop: 4,
+  },
+  totalRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 4,
+  },
+  totalCategory: {
+    color: '#e5e7eb',
+    fontSize: 13,
+  },
+  totalCategoryAmount: {
+    color: '#c4b5fd',
+    fontSize: 13,
+    fontWeight: '600',
+  },
+});

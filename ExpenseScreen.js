@@ -282,3 +282,99 @@ export default function ExpenseScreen() {
   };
 
   const submitLabel = editingId == null ? 'Add Expense' : 'Save Changes';
+
+
+    return (
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.heading}>Student Expense Tracker (Advanced)</Text>
+
+      <View style={styles.filtersRow}>
+        <FilterButton label="All" value="ALL" />
+        <FilterButton label="This Week" value="WEEK" />
+        <FilterButton label="This Month" value="MONTH" />
+      </View>
+
+
+      <View style={styles.totalsCard}>
+        <Text style={styles.totalHeading}>
+          Total Spending ({currentFilterLabel})
+        </Text>
+        <Text style={styles.totalAmount}>
+          ${totalSpending.toFixed(2)}
+        </Text>
+
+        <Text style={[styles.totalHeading, { marginTop: 8 }]}>
+          By Category ({currentFilterLabel})
+        </Text>
+        {Object.keys(totalsByCategory).length === 0 ? (
+          <Text style={styles.totalEmpty}>
+            No expenses for this filter.
+          </Text>
+        ) : (
+          Object.entries(totalsByCategory).map(([cat, value]) => (
+            <View key={cat} style={styles.totalRow}>
+              <Text style={styles.totalCategory}>{cat}</Text>
+              <Text style={styles.totalCategoryAmount}>
+                ${value.toFixed(2)}
+              </Text>
+            </View>
+          ))
+        )}
+      </View>
+
+
+      <View style={styles.form}>
+        <TextInput
+          style={styles.input}
+          placeholder="Amount (e.g. 12.50)"
+          placeholderTextColor="#9ca3af"
+          keyboardType="numeric"
+          value={amount}
+          onChangeText={setAmount}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Category (Food, Books, Rent...)"
+          placeholderTextColor="#9ca3af"
+          value={category}
+          onChangeText={setCategory}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Note (optional)"
+          placeholderTextColor="#9ca3af"
+          value={note}
+          onChangeText={setNote}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Date (YYYY-MM-DD)"
+          placeholderTextColor="#9ca3af"
+          value={dateText}
+          onChangeText={setDateText}
+        />
+        <Button title={submitLabel} onPress={handleSubmit} />
+        {editingId != null && (
+          <View style={{ marginTop: 8 }}>
+            <Button title="Cancel Edit" onPress={resetForm} />
+          </View>
+        )}
+      </View>
+
+
+      <FlatList
+        data={filteredExpenses}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={renderExpense}
+        ListEmptyComponent={
+          <Text style={styles.empty}>No expenses yet.</Text>
+        }
+      />
+
+      <Text style={styles.footer}>
+        Enter your expenses, filter by date, and track totals. All data is
+        saved locally with SQLite.
+      </Text>
+    </SafeAreaView>
+  );
+}

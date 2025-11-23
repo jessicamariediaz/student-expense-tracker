@@ -227,3 +227,58 @@ export default function ExpenseScreen() {
       : filter === 'WEEK'
       ? 'This Week'
       : 'This Month';
+
+
+
+  const renderExpense = ({ item }) => (
+    <TouchableOpacity
+      onPress={() => startEditing(item)}
+      style={styles.expenseRow}
+    >
+      <View style={{ flex: 1 }}>
+        <Text style={styles.expenseAmount}>
+          ${Number(item.amount).toFixed(2)}
+        </Text>
+        <Text style={styles.expenseCategory}>{item.category}</Text>
+        {item.date ? (
+          <Text style={styles.expenseDate}>Date: {item.date}</Text>
+        ) : null}
+        {item.note ? (
+          <Text style={styles.expenseNote}>{item.note}</Text>
+        ) : null}
+      </View>
+
+      <TouchableOpacity onPress={() => deleteExpense(item.id)}>
+        <Text style={styles.delete}>✕</Text>
+      </TouchableOpacity>
+    </TouchableOpacity>
+  );
+
+  const FilterButton = ({ label, value }) => (
+    <TouchableOpacity
+      onPress={() => setFilter(value)}
+      style={[
+        styles.filterButton,
+        filter === value && styles.filterButtonActive,
+      ]}
+    >
+      <Text
+        style={[
+          styles.filterButtonText,
+          filter === value && styles.filterButtonTextActive,
+        ]}
+      >
+        {label}
+      </Text>
+    </TouchableOpacity>
+  );
+
+  const handleSubmit = () => {
+    if (editingId == null) {
+      addExpense();
+    } else {
+      updateExpense();
+    }
+  };
+
+  const submitLabel = editingId == null ? 'Add Expense' : 'Save Changes';

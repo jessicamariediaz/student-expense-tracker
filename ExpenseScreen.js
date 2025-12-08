@@ -510,3 +510,19 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
+
+
+import SpendingByCategoryChart from "../components/SpendingByCategoryChart";
+
+
+return (
+  <ScrollView style={{ flex: 1 }}>
+    {/* Existing UI for listing expenses */}
+
+    {/* Add the chart below */}
+    <SpendingByCategoryChart expenses={expenses} />
+
+  </ScrollView>
+);
+
+
